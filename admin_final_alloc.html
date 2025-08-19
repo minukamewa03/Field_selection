@@ -1,0 +1,19 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<h2>Final Field Allocation</h2>
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr><th>Reg No</th><th>Name</th><th>SGPA</th><th>Allocated Field</th></tr>
+  </thead>
+  <tbody>
+    {% for reg_no, name, sgpa, field in reg_list %}
+    <tr>
+      <td>{{ reg_no }}</td>
+      <td>{{ name }}</td>
+      <td>{{ "%.2f"|format(sgpa) }}</td>
+      <td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

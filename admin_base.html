@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - {{ title }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a href="{{ url_for('admin_dashboard') }}" class="navbar-brand">Admin Portal</a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_grade_changes') }}">Grade Changes</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_all_results') }}">All Results</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_final_alloc') }}">Final Allocation</a></li>
+    </ul>
+    <a href="{{ url_for('admin_logout') }}" class="btn btn-outline-light">Logout</a>
+  </div>
+</nav>
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        <div class="alert alert-info">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

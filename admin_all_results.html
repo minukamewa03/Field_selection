@@ -1,0 +1,30 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<h2>All Student Results</h2>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Reg No</th><th>Name</th><th>SGPA</th><th>Rank</th>
+      <th>MA1014</th><th>CS1033</th><th>ME1033</th>
+      <th>MT1023</th><th>EE1040</th><th>CE1023</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.reg_no }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ "%.2f"|format(s.sgpa) }}</td>
+      <td>{{ s.rank }}</td>
+      <td>{{ s.ma1014 }}</td>
+      <td>{{ s.cs1033 }}</td>
+      <td>{{ s.me1033 }}</td>
+      <td>{{ s.mt1023 }}</td>
+      <td>{{ s.ee1040 }}</td>
+      <td>{{ s.ce1023 }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a class="btn btn-success" href="{{ url_for('admin_export_results') }}">Export to Excel</a>
+{% endblock %}
